@@ -20,6 +20,9 @@ export default defineNuxtModule<ModuleOptions>({
       path: resolver.resolve('runtime/components'),
     })
 
+    // Add CSS frameworks
     _nuxt.options.css.push('bulma/css/bulma.css')
+    _nuxt.options.css.push('@fortawesome/fontawesome-free/css/all.css')
+
   },
 })
