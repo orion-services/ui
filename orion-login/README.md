@@ -2,19 +2,19 @@
 Get your module up and running quickly.
 
 Find and replace all on all files (CMD+SHIFT+F):
-- Name: My Module
+- Name: Orion Login
 - Package name: orion-login
-- Description: My new Nuxt module
+- Description: Orion Login Nuxt module
 -->
 
-# My Module
+# Orion Login Module
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
-My new Nuxt module for doing amazing things.
+Orion Login Nuxt module for doing amazing things.
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
 <!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/orion-login?file=playground%2Fapp.vue) -->
@@ -35,40 +35,38 @@ Install the module to your Nuxt application with one command:
 npx nuxi module add orion-login
 ```
 
-That's it! You can now use My Module in your Nuxt app ✨
-
+That's it! You can now use Orion Login Module in your Nuxt app ✨
 
 ## Contribution
 
 <details>
   <summary>Local development</summary>
-  
+
   ```bash
   # Install dependencies
   npm install
-  
+
   # Generate type stubs
   npm run dev:prepare
-  
+
   # Develop with the playground
   npm run dev
-  
+
   # Build the playground
   npm run dev:build
-  
+
   # Run ESLint
   npm run lint
-  
+
   # Run Vitest
   npm run test
   npm run test:watch
-  
+
   # Release new version
   npm run release
   ```
 
 </details>
-
 
 <!-- Badges -->
 [npm-version-src]: https://img.shields.io/npm/v/orion-login/latest.svg?style=flat&colorA=020420&colorB=00DC82
