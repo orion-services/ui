@@ -1,3 +1,8 @@
+---
+layout: default
+title: User Interface Components
+---
+
 # User Interface Components for Orion Services
 
 This repository contains a set of [Nuxt](https://nuxt.com/) modules that
