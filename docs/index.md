@@ -18,6 +18,8 @@ collaborative learning applications using the [Orion Services](https://orion-ser
 
 ## About Orion Services
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f8b61d44-3a90-4c59-94c1-8fbd60e82d15/deploy-status)](https://app.netlify.com/sites/ui-orion-services/deploys)
+
 Collaborative learning applications encompass a range of essential features,
 such as communication, group management, and workflow control, among others.
 However, these features become complex due to the need for data synchronization
