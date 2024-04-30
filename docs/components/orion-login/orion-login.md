@@ -46,7 +46,7 @@ The component accepts the following properties:
 * successLoginPath: The path to redirect the user after a successful login.
   Default is `/`.
 * errorLoginPath: The path to redirect the user after a failed login. Default
-  is `/login`.
+  is `/`.
 * successCreateUserPath: The path to redirect the user after a successful user
   creation. Default is `/`.
 * errorCreateUserPath: The path to redirect the user after a failed user
@@ -66,7 +66,6 @@ The component accepts the following properties:
 	/>
 </template>
 ```
-{: .fs-3 }
 
 ## Backend: Orion Users Service
 
