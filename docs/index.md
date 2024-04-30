@@ -1,19 +1,20 @@
 ---
 layout: default
-title: User Interface Components
+title: Home
+nav_order: 1
 ---
 
 # User Interface Components for Orion Services
 
 This repository contains a set of [Nuxt](https://nuxt.com/) modules that
 provides [Vuejs](https://vuejs.org) components that are used to build
-collaborative learning applications using the Orion Services.
+collaborative learning applications using the [Orion Services](https://orion-services.dev).
 
 ## List of Components available
 
 - [@orion-services/orion-login](https://www.npmjs.com/package/@orion-services/orion-login):
   A user interface component that provides a sign  in and sign up form to
-  authenticate users with [Orion Users Service](https://orion-services.github.io/users/).
+  authenticate users with [Orion Users Service](https://users.orion-services.dev).
 
 ## About Orion Services
 
