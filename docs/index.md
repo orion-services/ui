@@ -4,7 +4,7 @@ title: Home
 nav_order: 1
 ---
 
-# User Interface Components for Orion Services
+## User Interface Components for Orion Services
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f8b61d44-3a90-4c59-94c1-8fbd60e82d15/deploy-status)](https://app.netlify.com/sites/ui-orion-services/deploys)
 
@@ -12,12 +12,13 @@ This repository contains a set of [Nuxt](https://nuxt.com/) modules that
 provides [Vuejs](https://vuejs.org) components that are used to build
 collaborative learning applications using the [Orion Services](https://orion-services.dev).
 
-## List of Components available
+## Available Components
 
 - [@orion-services/orion-login](https://www.npmjs.com/package/@orion-services/orion-login):
   A user interface component that provides a sign-in and sign-up form to
   authenticate users with [Orion Users Service](https://users.orion-services.dev).
-  For more information, please, visit the [documentation] (./components/orion-login/orion-login.md)
+  For more information, please, visit the
+  [documentation](https://ui.orion-services.dev/components/orion-login/orion-login)
   of the component.
 
 ## About Orion Services
