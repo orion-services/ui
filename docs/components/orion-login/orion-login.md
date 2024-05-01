@@ -18,6 +18,9 @@ Install the module to your Nuxt application with one command:
 npx nuxi module add orion-login
 ```
 
+For more information about installation, please, look at the `npm` package:
+[@orion-services/orion-login](https://www.npmjs.com/package/@orion-services/orion-login).
+
 ## Usage
 
 To use the Orion Login component in your Nuxt application, import the component

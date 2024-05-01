@@ -15,8 +15,10 @@ collaborative learning applications using the [Orion Services](https://orion-ser
 ## List of Components available
 
 - [@orion-services/orion-login](https://www.npmjs.com/package/@orion-services/orion-login):
-  A user interface component that provides a sign  in and sign up form to
+  A user interface component that provides a sign-in and sign-up form to
   authenticate users with [Orion Users Service](https://users.orion-services.dev).
+  For more information, please, visit the [documentation] (./components/orion-login/orion-login.md)
+  of the component.
 
 ## About Orion Services
 
