@@ -7,6 +7,8 @@ nav_order: 1
 ## User Interface Components for Orion Services
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f8b61d44-3a90-4c59-94c1-8fbd60e82d15/deploy-status)](https://app.netlify.com/sites/ui-orion-services/deploys)
+![Discord](https://img.shields.io/discord/713516488601894922?style=flat&label=discord)
+
 
 This repository contains a set of [Nuxt](https://nuxt.com/) modules that
 provides [Vuejs](https://vuejs.org) components that are used to build
