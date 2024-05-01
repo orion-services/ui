@@ -9,16 +9,15 @@ Find and replace all on all files (CMD+SHIFT+F):
 
 # Orion Login Module
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![License][license-src]][license-href]
+![NPM License](https://img.shields.io/npm/l/%40orion-services%2Forion-login)
 [![Nuxt][nuxt-src]][nuxt-href]
+[![Discord](https://img.shields.io/discord/713516488601894922?style=flat&label=Discord&color=%23D8FCD3&link=https%3A%2F%2Fdiscord.com%2Finvite%2FXpyGTZPApN)](https://discord.com/invite/XpyGTZPApN)
 
 Orion Login Nuxt module for doing amazing things.
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
-<!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/orion-login?file=playground%2Fapp.vue) -->
-<!-- - [📖 &nbsp;Documentation](https://example.com) -->
+- [🏀 Online playground](https://stackblitz.com/github/orion-services/ui/tree/main/orion-login?file=playground%2Fapp.vue)
+- [📖 &nbsp;Documentation](https://ui.orion-services.dev/components/orion-login/orion-login)
 
 ## Features
 
