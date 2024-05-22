@@ -73,8 +73,8 @@ export default {
 
 <style>
 .scrollable {
-  width: 100%;
-  height: 40%;
+  width: 98%;
+  height: 50%;
   overflow: auto;
   padding: 10px;
 }

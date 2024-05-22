@@ -74,6 +74,7 @@ export default {
      */
     async createChannel() {
       try {
+        console.log(this.createChannelQuery())
         const response = await this.callTalkService(this.createChannelQuery())
         console.log(response.data.createChannel)
         this.channel = response.data.createChannel
@@ -164,7 +165,7 @@ export default {
      */
     async callTalkService(query) {
       try {
-        const response = await fetch(this.baseURL, {
+        const response = await fetch(this.url, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
