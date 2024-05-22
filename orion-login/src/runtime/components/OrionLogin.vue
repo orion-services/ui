@@ -3,7 +3,7 @@
     <div class="column is-half">
       <LoginForm
         v-show="showLoginForm"
-        @login="login"
+        @login="loginUser"
       />
 
       <CreateForm
@@ -14,12 +14,20 @@
       <div class="buttons is-right">
         <button
           class="button is-text"
-          @click="changeForms()"
+          @click="toggleForms"
         >
-          <span class="icon">
-            <i class="fa-solid fa-user-plus" />
-          </span>
-          <span>Cadastre-se</span>
+          <div v-show="showLoginForm">
+            <span class="icon">
+              <i class="fa-solid fa-plus" />
+            </span>
+            <span>Cadastro</span>
+          </div>
+          <div v-show="!showLoginForm">
+            <span class="icon">
+              <i class="fa-solid fa-right-to-bracket" />
+            </span>
+            <span>Login</span>
+          </div>
         </button>
       </div>
 
@@ -62,26 +70,16 @@
 <script>
 export default {
   props: {
-    baseURL: {
+    url: {
       type: String,
-      default: 'http://localhost:8080/api/users',
+      default: 'http://localhost:8080/users',
     },
+
     successLoginPath: {
       type: String,
       default: '/',
     },
-    errorLoginPath: {
-      type: String,
-      default: '/',
-    },
-    successCreateUserPath: {
-      type: String,
-      default: '/',
-    },
-    errorCreateUserPath: {
-      type: String,
-      default: '/',
-    },
+
   },
   data() {
     return {
@@ -98,12 +96,16 @@ export default {
       showSuccessNotification: false,
       showWarningNotification: false,
       showErrorNotification: false,
+
       successMessage: '',
       warningMessage: '',
       errorMessage: '',
+
     }
   },
+
   methods: {
+
     /**
      * Creates a new user in the Orion Users Service
      *
@@ -114,24 +116,19 @@ export default {
         if (form.name === '' || form.email === '' || form.password === '') {
           this.warningMessage = 'Por favor, preencha todos os campos'
           this.showWarningNotification = true
-          this.$router.push(this.errorCreateUserPath)
         }
         else {
-          console.log(user)
-          const user = await this.callWebService(form.operation)
-          if (user != undefined) {
-            sessionStorage.setItem('user', user)
-            this.successMessage = this.$t('userCreated')
+          this.user = await this.callUsersService(form)
+          if (this.user != undefined) {
+            sessionStorage.setItem('user', JSON.stringify(this.user))
+            this.successMessage = 'Usuário criado com sucesso!'
             this.showSuccessNotification = true
-            this.$router.push(this.successCreateUserPath)
           }
         }
       }
       catch (error) {
-        console.log(error)
         this.errorMessage = error
         this.showErrorNotification = true
-        this.$router.push(this.errorCreateUserPath)
       }
     },
 
@@ -140,28 +137,41 @@ export default {
      *
      * @param {*} form Form data to authenticate the user
      */
-    login(form) {
-      if (form.name === '' || form.email === '' || form.password === '') {
-        this.warningMessage = 'Por favor, preencha todos os campos'
-        this.showWarningNotification = true
-        this.$router.push(this.errorLoginPath)
+    async loginUser(form) {
+      try {
+        if (form.email === '' || form.password === '') {
+          this.warningMessage = 'Por favor, preencha todos os campos'
+          this.showWarningNotification = true
+        }
+        else {
+          this.user = await this.callUsersService(form)
+          if (this.user != undefined) {
+            sessionStorage.setItem('user', JSON.stringify(this.user))
+            this.$router.push(this.successLoginPath)
+          }
+        }
+      }
+      catch (error) {
+        this.errorMessage = error
+        this.showErrorNotification = true
       }
     },
 
     /**
      * Calls the users Web Service to create a new user
      */
-    async callWebService(operation) {
+    async callUsersService(form) {
       try {
-        const response = await fetch(this.baseURL + operation, {
+        console.log(this.baseURL + form.operation)
+        const response = await fetch(this.baseURL + form.operation, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
           body: new URLSearchParams({
-            name: this.name,
-            email: this.email,
-            password: this.password,
+            name: form.name,
+            email: form.email,
+            password: form.password,
           }),
         })
         return await response.json()
@@ -184,7 +194,7 @@ export default {
     /**
      * Changes the form to create a new user
      */
-    changeForms() {
+    toggleForms() {
       this.showLoginForm = !this.showLoginForm
     },
   },

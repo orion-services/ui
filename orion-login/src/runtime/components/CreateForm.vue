@@ -56,7 +56,7 @@
         <span class="icon">
           <i class="fas fa-plus" />
         </span>
-        <span>Create</span>
+        <span>Cadastro</span>
       </button>
     </div>
   </div>
@@ -67,7 +67,9 @@ export default {
   props: {
     operation: { type: String, default: '/create' },
   },
+
   emits: ['create-user'],
+
   data() {
     return {
       name: '',
@@ -75,6 +77,7 @@ export default {
       password: '',
     }
   },
+
   methods: {
     create() {
       this.$emit('create-user', {
@@ -84,8 +87,7 @@ export default {
         operation: this.operation,
       })
     },
+
   },
 }
 </script>
-
-<style></style>

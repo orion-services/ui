@@ -51,7 +51,7 @@
 <script>
 export default {
   props: {
-    operation: { type: String, default: '/authenticate' },
+    operation: { type: String, default: '/login' },
   },
 
   emits: ['login'],

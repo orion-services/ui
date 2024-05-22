@@ -16,10 +16,18 @@
           class="button is-text"
           @click="toggleForms"
         >
-          <span class="icon">
-            <i class="fa-solid fa-user-plus" />
-          </span>
-          <span>Cadastre-se</span>
+          <div v-show="showLoginForm">
+            <span class="icon">
+              <i class="fa-solid fa-plus" />
+            </span>
+            <span>Cadastro</span>
+          </div>
+          <div v-show="!showLoginForm">
+            <span class="icon">
+              <i class="fa-solid fa-right-to-bracket" />
+            </span>
+            <span>Login</span>
+          </div>
         </button>
       </div>
 
@@ -62,14 +70,16 @@
 <script>
 export default {
   props: {
-    baseURL: {
+    url: {
       type: String,
-      default: 'http://localhost:8080/api/users',
+      default: 'http://localhost:8080/users',
     },
+
     successLoginPath: {
       type: String,
       default: '/',
     },
+
   },
   data() {
     return {
@@ -86,12 +96,16 @@ export default {
       showSuccessNotification: false,
       showWarningNotification: false,
       showErrorNotification: false,
+
       successMessage: '',
       warningMessage: '',
       errorMessage: '',
+
     }
   },
+
   methods: {
+
     /**
      * Creates a new user in the Orion Users Service
      *
@@ -104,7 +118,7 @@ export default {
           this.showWarningNotification = true
         }
         else {
-          this.user = await this.callWebService(form)
+          this.user = await this.callUsersService(form)
           if (this.user != undefined) {
             sessionStorage.setItem('user', JSON.stringify(this.user))
             this.successMessage = 'Usuário criado com sucesso!'
@@ -124,18 +138,15 @@ export default {
      * @param {*} form Form data to authenticate the user
      */
     async loginUser(form) {
-      alert('loginUser')
       try {
         if (form.email === '' || form.password === '') {
           this.warningMessage = 'Por favor, preencha todos os campos'
           this.showWarningNotification = true
         }
         else {
-          this.user = await this.callWebService(form)
+          this.user = await this.callUsersService(form)
           if (this.user != undefined) {
             sessionStorage.setItem('user', JSON.stringify(this.user))
-            this.successMessage = 'Autenticado'
-            this.showSuccessNotification = true
             this.$router.push(this.successLoginPath)
           }
         }
@@ -149,7 +160,7 @@ export default {
     /**
      * Calls the users Web Service to create a new user
      */
-    async callWebService(form) {
+    async callUsersService(form) {
       try {
         console.log(this.baseURL + form.operation)
         const response = await fetch(this.baseURL + form.operation, {
