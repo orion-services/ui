@@ -7,13 +7,15 @@ Find and replace all on all files (CMD+SHIFT+F):
 - Description: Orion Login Nuxt module
 -->
 
-# Orion Login Module
+# Orion Login
 
 ![NPM License](https://img.shields.io/npm/l/%40orion-services%2Forion-login)
 [![Nuxt][nuxt-src]][nuxt-href]
 [![Discord](https://img.shields.io/discord/713516488601894922?style=flat&label=Discord&color=%23D8FCD3&link=https%3A%2F%2Fdiscord.com%2Finvite%2FXpyGTZPApN)](https://discord.com/invite/XpyGTZPApN)
 
-Orion Login Nuxt module for doing amazing things.
+The Orion Login is a user interface component that provides a sign in and sign
+up form to authenticate users with the [Orion Users Service](https://users.orion-services.dev).
+It is built as a [Nuxt](https://nuxtjs.org) module.
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
 - [🏀 Online playground](https://stackblitz.com/github/orion-services/ui/tree/main/orion-login?file=playground%2Fapp.vue)
@@ -21,12 +23,12 @@ Orion Login Nuxt module for doing amazing things.
 
 ## Features
 
-<!-- Highlight some of the features your module provide here -->
-- ⛰ &nbsp;Foo
-- 🚠 &nbsp;Bar
-- 🌲 &nbsp;Baz
+The Orion Login component provides the following features:
 
-## Quick Setup
+* Sign-up page
+* Sign-in page
+
+## Installation
 
 Install the module to your Nuxt application with one command:
 
@@ -34,9 +36,37 @@ Install the module to your Nuxt application with one command:
 npx nuxi module add orion-login
 ```
 
-That's it! You can now use Orion Login Module in your Nuxt app ✨
+## Usage
 
-## Contribution
+To use the Orion Login component in your Nuxt application, import the component
+and include it in your template. The component will render a sign in and sign up
+form.
+
+```vue
+<template>
+  <OrionLogin />
+</template>
+```
+
+## Properties
+
+The component accepts the following properties:
+
+* url: The base URL of the Orion Users Service. Default is
+  `http://localhost:8080/users`.
+* success-login-path: The path to redirect the user after a successful login.
+  Default is `/`.
+
+### Example
+
+```vue
+<template>
+    <OrionLogin
+		  url="https://users.orion-services.dev"
+		  success-login-path="/talk"
+		/>
+</template>
+```
 
 <details>
   <summary>Local development</summary>
