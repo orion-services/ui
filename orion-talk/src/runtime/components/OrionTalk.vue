@@ -74,7 +74,6 @@ export default {
      */
     async createChannel() {
       try {
-        console.log(this.createChannelQuery())
         const response = await this.callTalkService(this.createChannelQuery())
         console.log(response.data.createChannel)
         this.channel = response.data.createChannel
