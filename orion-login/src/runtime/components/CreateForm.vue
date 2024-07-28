@@ -48,7 +48,7 @@
           <i class="fas fa-lock" />
         </span>
       </div>
-
+      <PasswordVerification :password="password"/>
       <button
         class="button is-rounded"
         @click="create()"
@@ -63,7 +63,11 @@
 </template>
 
 <script>
+import PasswordVerification from './PasswordVerification.vue';
 export default {
+  components: {
+    PasswordVerification
+  },
   props: {
     operation: { type: String, default: '/create' },
   },
