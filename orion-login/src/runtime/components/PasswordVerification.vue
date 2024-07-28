@@ -1,57 +1,104 @@
 <template>
-    <div>
-      <p :class="validation">{{ verification }}</p>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-        password: {
-            type: String,
-            required: true,
-        }
-    },
-    data() {
-      return {
-        verification: '',
-        validation: 'invalid',
-      };
-    },
-    watch: {
-      password(newPassword) {
-        const hasEigthToTwentyCharacters = newPassword.length >= 8 && newPassword.length <= 20
-        const hasCapitalLetter = /[A-Z]/.test(newPassword)
-        const hasAtLeastOneNumber = /[0-9]/.test(newPassword)
-        const hasNoSpaces = /^\s|\s$|\s{2,}/
-        const hasNoSpacesBetween = /[^\s]\s[^\s]/
+  <div>
+    <p :class="validationClass" class="validation-text">
+      <span v-show="!isValid" class="tooltip">
+        <text class="title">A senha deve incluir:</text>
+        <div v-for="(msg, index) in formattedMessages" :key="index" :class="msg.type">
+          {{ msg.text }}
+        </div>
+      </span>
+    </p>
+  </div>
+</template>
 
-        console.log("senha: ", newPassword)
-        if (hasEigthToTwentyCharacters) {
-            console.log('tem de 8 a 20 caracteres')
-        }
-        else {
-            console.log('não tem de 8 a 20 caracteres')
-        }
+<script>
+export default {
+  props: {
+    password: {
+      type: String,
+      required: true,
+    }
+  },
+  data() {
+    return {
+      validationClass: 'invalid',
+      isValid: false,
+      messages: [
+        { text: "8-20 Characteres", type: "invalid" },
+        { text: "Não contém letra maiúscula", type: "invalid" },
+        { text: "Não contém número", type: "invalid" },
+        { text: "Não deve conter espaços em branco", type: "invalid" }
+      ],
+    };
+  },
+  computed: {
+    formattedMessages() {
+      return this.messages;
+    }
+  },
+  watch: {
+    password(newPassword) {
+      let validMessages = [...this.messages];
 
-        if(hasCapitalLetter){
-            console.log('caiu letra maiuscula')
-        }else{
-            console.log('não tem letra maiuscula')
-        }
+      const hasEightToTwentyCharacters = newPassword.length >= 8 && newPassword.length <= 20;
+      const hasCapitalLetter = /[A-Z]/.test(newPassword);
+      const hasAtLeastOneNumber = /[0-9]/.test(newPassword);
+      const hasNoSpaces = !(/\s/.test(newPassword));
 
-        if(hasAtLeastOneNumber){
-            console.log('tem número')
-        }else{
-            console.log('não tem número')
-        }
-        
-        if(hasNoSpaces.test(newPassword) || hasNoSpacesBetween.test(newPassword)){
-            console.log('com espaço em branco')
-        }else{
-            console.log('sem espaço em branco')
-        }
-      }
+   
+      validMessages[0].type = hasEightToTwentyCharacters ? "valid" : "invalid";
+      validMessages[1].type = hasCapitalLetter ? "valid" : "invalid";
+      validMessages[2].type = hasAtLeastOneNumber ? "valid" : "invalid";
+      validMessages[3].type = hasNoSpaces ? "valid" : "invalid";
+
+      this.messages = validMessages;
+      this.validationClass = this.messages.every(msg => msg.type === 'valid') ? 'valid' : 'invalid';
     }
   }
-  </script>  
+};
+</script>
+
+<style>
+.validation-text {
+  position: relative;
+  display: inline-block;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.tooltip {
+  width: 280px;
+  background-color: #e6e6e6;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  top: 10%;
+  opacity: 1;
+  white-space: pre-wrap;
+  text-align: justify;
+  box-shadow: 5px 5px 5px #d0cccc;
+}
+
+.title {
+  color: #3d3d3d;
+  font-size: 14px;
+}
+
+.invalid .tooltip {
+  color: red;
+}
+
+.valid .tooltip {
+  color: green;
+}
+
+.invalid {
+  color: red;
+}
+
+.valid {
+  color: green;
+}
+</style>
