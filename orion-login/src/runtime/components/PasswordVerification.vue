@@ -2,7 +2,7 @@
   <div>
     <p :class="validationClass" class="validation-text">
       <span v-show="!isValid" class="tooltip">
-        <text class="title">A senha deve incluir:</text>
+        <text class="title">Password must include:</text>
         <div v-for="(msg, index) in formattedMessages" :key="index" :class="msg.type">
           {{ msg.text }}
         </div>
@@ -25,9 +25,9 @@ export default {
       isValid: false,
       messages: [
         { text: "8-20 Characteres", type: "invalid" },
-        { text: "Não contém letra maiúscula", type: "invalid" },
-        { text: "Não contém número", type: "invalid" },
-        { text: "Não deve conter espaços em branco", type: "invalid" }
+        { text: "At least one capital letter", type: "invalid" },
+        { text: "At least one number", type: "invalid" },
+        { text: "No spaces", type: "invalid" }
       ],
     };
   },
