@@ -1,7 +1,7 @@
 <template>
   <div>
     <p :class="validationClass" class="validation-text">
-      <span v-show="!isValid" class="tooltip">
+      <span v-show="hasStartedTyping && !isValid" class="tooltip">
         <text class="title">Password must include:</text>
         <div v-for="(msg, index) in formattedMessages" :key="index" :class="msg.type">
           {{ msg.text }}
@@ -38,6 +38,10 @@ export default {
   },
   watch: {
     password(newPassword) {
+      if (!this.hasStartedTyping && newPassword.length > 0) {
+        this.hasStartedTyping = true;
+      }
+
       let validMessages = [...this.messages];
 
       const hasEightToTwentyCharacters = newPassword.length >= 8 && newPassword.length <= 20;
@@ -45,14 +49,15 @@ export default {
       const hasAtLeastOneNumber = /[0-9]/.test(newPassword);
       const hasNoSpaces = !(/\s/.test(newPassword));
 
-   
       validMessages[0].type = hasEightToTwentyCharacters ? "valid" : "invalid";
       validMessages[1].type = hasCapitalLetter ? "valid" : "invalid";
       validMessages[2].type = hasAtLeastOneNumber ? "valid" : "invalid";
       validMessages[3].type = hasNoSpaces ? "valid" : "invalid";
 
       this.messages = validMessages;
-      this.validationClass = this.messages.every(msg => msg.type === 'valid') ? 'valid' : 'invalid';
+      const allValid =  this.messages.every(msg => msg.type === 'valid')
+      this.validationClass = allValid ? 'valid' : 'invalid';
+      this.isValid = allValid ? true: false
     }
   }
 };
