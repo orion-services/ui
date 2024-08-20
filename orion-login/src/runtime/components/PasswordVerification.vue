@@ -1,7 +1,7 @@
 <template>
   <div>
-    <p :class="validationClass" class="validation-text">
-      <span v-show="hasStartedTyping && !isValid" class="tooltip">
+    <p :class="validationClass" >
+      <span v-show="hasStartedTyping && !isValid" class="notification is-warning">
         <text class="title">Password must include:</text>
         <div v-for="(msg, index) in formattedMessages" :key="index" :class="msg.type">
           {{ msg.text }}
@@ -9,9 +9,17 @@
       </span>
     </p>
   </div>
+  <div
+    v-show="showWarningNotification"
+  >
+    {{ warningMessage }}
+  </div>
+
 </template>
 
 <script>
+
+
 export default {
   props: {
     password: {
@@ -23,11 +31,13 @@ export default {
     return {
       validationClass: 'invalid',
       isValid: false,
+      showWarningNotification: false,
+      warningMessage: '',
       messages: [
-        { text: "8-20 Characteres", type: "invalid" },
-        { text: "At least one capital letter", type: "invalid" },
-        { text: "At least one number", type: "invalid" },
-        { text: "No spaces", type: "invalid" }
+        { text: "8-20 Characteres", type: "invalid"},
+        { text: "At least one capital letter", type: "invalid"},
+        { text: "At least one number", type: "invalid"},
+        { text: "No spaces", type: "invalid"},
       ],
     };
   },
@@ -53,38 +63,19 @@ export default {
       validMessages[1].type = hasCapitalLetter ? "valid" : "invalid";
       validMessages[2].type = hasAtLeastOneNumber ? "valid" : "invalid";
       validMessages[3].type = hasNoSpaces ? "valid" : "invalid";
-
+      if(true){
       this.messages = validMessages;
       const allValid =  this.messages.every(msg => msg.type === 'valid')
       this.validationClass = allValid ? 'valid' : 'invalid';
       this.isValid = allValid ? true: false
+      this.showWarningNotification = true;
+      }
     }
   }
 };
 </script>
 
 <style>
-.validation-text {
-  position: relative;
-  display: inline-block;
-  padding: 5px;
-  font-size: 14px;
-}
-
-.tooltip {
-  width: 280px;
-  background-color: #e6e6e6;
-  text-align: center;
-  border-radius: 10px;
-  padding: 10px;
-  position: absolute;
-  z-index: 1;
-  top: 10%;
-  opacity: 1;
-  white-space: pre-wrap;
-  text-align: justify;
-  box-shadow: 5px 5px 5px #d0cccc;
-}
 
 .title {
   color: #3d3d3d;
@@ -105,5 +96,10 @@ export default {
 
 .valid {
   color: green;
+}
+
+.notification{
+  display: block;
+  margin: 15px;
 }
 </style>
