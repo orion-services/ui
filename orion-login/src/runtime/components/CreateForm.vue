@@ -37,6 +37,20 @@
 
       <div class="control has-icons-left">
         <input
+          v-model="emailVerification"
+          class="input mb-4"
+          type="email"
+          placeholder="Confirm your e-mail"
+          required
+        >
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope" />
+        </span>
+      </div>
+      <EmailVerification :email :emailVerification="emailVerification"/>
+      
+      <div class="control has-icons-left">
+        <input
           v-model="password"
           class="input mb-4"
           type="password"
@@ -63,10 +77,12 @@
 </template>
 
 <script>
+import EmailVerification from './EmailVerification.vue';
 import PasswordVerification from './PasswordVerification.vue';
 export default {
   components: {
-    PasswordVerification
+    PasswordVerification,
+    EmailVerification
   },
   props: {
     operation: { type: String, default: '/create' },
@@ -78,6 +94,7 @@ export default {
     return {
       name: '',
       email: '',
+      emailVerification: '',
       password: '',
     }
   },
@@ -87,6 +104,7 @@ export default {
       this.$emit('create-user', {
         name: this.name,
         email: this.email,
+        email: this.emailVerification,
         password: this.password,
         operation: this.operation,
       })

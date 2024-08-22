@@ -1,7 +1,7 @@
 <template>
   <div>
     <p :class="validationClass" >
-      <span v-show="hasStartedTyping && !isValid" class="notification is-warning">
+      <span v-show="hasStartedTyping && !isValid" class="notification is-warning" >
         <text class="title">Password must include:</text>
         <div v-for="(msg, index) in formattedMessages" :key="index" :class="msg.type">
           {{ msg.text }}
@@ -12,14 +12,11 @@
   <div
     v-show="showWarningNotification"
   >
-    {{ warningMessage }}
+  {{ warningMessage }} 
   </div>
-
 </template>
 
 <script>
-
-
 export default {
   props: {
     password: {
