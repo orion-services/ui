@@ -10,7 +10,7 @@
         v-show="!showLoginForm"
         @create-user="createUser"
       />
-
+      
       <div class="buttons is-right">
         <button
           class="button is-text"
@@ -68,6 +68,7 @@
 </template>
 
 <script>
+
 export default {
   props: {
     url: {
