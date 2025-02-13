@@ -64,13 +64,12 @@
       </div>
       <PasswordVerification :password="password"/>
       <button
-        class="button is-rounded"
+        class="button is-rounded is-fullwidth"
         @click="create()"
       >
         <span class="icon">
-          <i class="fas fa-plus" />
+          <i class="fas fa-user-plus" />
         </span>
-        <span>Cadastro</span>
       </button>
     </div>
   </div>

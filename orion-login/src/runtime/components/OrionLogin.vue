@@ -18,15 +18,13 @@
         >
           <div v-show="showLoginForm">
             <span class="icon">
-              <i class="fa-solid fa-plus" />
+              <i class="fa-solid fa-user-plus" />
             </span>
-            <span>Cadastro</span>
           </div>
           <div v-show="!showLoginForm">
             <span class="icon">
               <i class="fa-solid fa-right-to-bracket" />
             </span>
-            <span>Login</span>
           </div>
         </button>
       </div>

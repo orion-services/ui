@@ -1,35 +1,38 @@
 <template>
-    <span v-if="email && emailVerification && email !== emailVerification" 
-    v-show="showWarningNotification" 
+  <span
+    v-if="email && emailVerification && email !== emailVerification"
+    v-show="showWarningNotification"
     class="notification is-warning"
-    >{{ warningMessage }}</span>
-
+  >
+    {{ warningMessage }}
+  </span>
 </template>
 
 <script>
-export default{
-   props: {
+export default {
+  props: {
     email: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     emailVerification: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      showWarningNotification: true,
+      warningMessage: 'The emails do not match',
     }
-   },
-   data(){
-    return{
-        showWarningNotification: true,
-        warningMessage: 'Os e-mails não são iguais',
-    }
-   }
+  },
 }
 </script>
+
 <style>
-.notification{
+.notification {
     margin-top: 5px;
     font-size: 15px;
-    
+
 }
 </style>

@@ -36,13 +36,12 @@
       </div>
 
       <button
-        class="button is-rounded"
-        @click=" login()"
+        class="button is-rounded is-fullwidth"
+        @click="login()"
       >
         <span class="icon">
           <i class="fas fa-right-to-bracket" />
         </span>
-        <span>Login</span>
       </button>
     </div>
   </div>
