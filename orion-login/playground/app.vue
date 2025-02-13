@@ -1,3 +1,3 @@
 <template>
-    <OrionLogin success-login-path="/talk" />
+  <OrionLogin success-login-path="/talk" />
 </template>
