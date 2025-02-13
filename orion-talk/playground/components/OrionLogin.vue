@@ -10,7 +10,7 @@
         v-show="!showLoginForm"
         @create-user="createUser"
       />
-      
+
       <div class="buttons is-right">
         <button
           class="button is-text"
@@ -18,13 +18,15 @@
         >
           <div v-show="showLoginForm">
             <span class="icon">
-              <i class="fa-solid fa-user-plus" />
+              <i class="fa-solid fa-plus" />
             </span>
+            <span>Cadastro</span>
           </div>
           <div v-show="!showLoginForm">
             <span class="icon">
               <i class="fa-solid fa-right-to-bracket" />
             </span>
+            <span>Login</span>
           </div>
         </button>
       </div>
@@ -66,7 +68,6 @@
 </template>
 
 <script>
-
 export default {
   props: {
     url: {

@@ -1,6 +1,3 @@
 <template>
-  <OrionLogin />
+  <OrionLogin success-login-path="/talk" />
 </template>
-
-<script setup>
-</script>
