@@ -113,14 +113,14 @@ export default {
     async createUser(form) {
       try {
         if (form.name === '' || form.email === '' || form.password === '') {
-          this.warningMessage = 'Por favor, preencha todos os campos'
+          this.warningMessage = 'Please fill in all fields'
           this.showWarningNotification = true
         }
         else {
           this.user = await this.callUsersService(form)
           if (this.user != undefined) {
             sessionStorage.setItem('user', JSON.stringify(this.user))
-            this.successMessage = 'Usuário criado com sucesso!'
+            this.successMessage = 'User created successfully!'
             this.showSuccessNotification = true
           }
         }
@@ -139,7 +139,7 @@ export default {
     async loginUser(form) {
       try {
         if (form.email === '' || form.password === '') {
-          this.warningMessage = 'Por favor, preencha todos os campos'
+          this.warningMessage = 'Please fill in all fields'
           this.showWarningNotification = true
         }
         else {

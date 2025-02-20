@@ -37,7 +37,7 @@
 
       <div class="control has-icons-left">
         <input
-          v-model="emailVerification"
+          v-model="emailValidation"
           class="input mb-4"
           type="email"
           placeholder="Confirm your e-mail"
@@ -46,9 +46,12 @@
         <span class="icon is-small is-left">
           <i class="fas fa-envelope" />
         </span>
+        <EmailValidation
+          :email="email"
+          :email-validation="emailValidation"
+        />
       </div>
-      <EmailVerification :email :emailVerification="emailVerification"/>
-      
+
       <div class="control has-icons-left">
         <input
           v-model="password"
@@ -61,8 +64,8 @@
         <span class="icon is-small is-left">
           <i class="fas fa-lock" />
         </span>
+        <PasswordValidation :password="password" />
       </div>
-      <PasswordVerification :password="password"/>
       <button
         class="button is-rounded is-fullwidth"
         @click="create()"
@@ -76,12 +79,13 @@
 </template>
 
 <script>
-import EmailVerification from './EmailVerification.vue';
-import PasswordVerification from './PasswordVerification.vue';
+import EmailValidation from './validation/EmailValidation.vue'
+import PasswordValidation from './validation/PasswordValidation.vue'
+
 export default {
   components: {
-    PasswordVerification,
-    EmailVerification
+    PasswordValidation,
+    EmailValidation,
   },
   props: {
     operation: { type: String, default: '/create' },
@@ -93,7 +97,7 @@ export default {
     return {
       name: '',
       email: '',
-      emailVerification: '',
+      emailValidation: '',
       password: '',
     }
   },
@@ -103,7 +107,7 @@ export default {
       this.$emit('create-user', {
         name: this.name,
         email: this.email,
-        email: this.emailVerification,
+        emailValidation: this.emailValidation,
         password: this.password,
         operation: this.operation,
       })

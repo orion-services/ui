@@ -1,6 +1,6 @@
 <template>
   <span
-    v-if="email && emailVerification && email !== emailVerification"
+    v-if="email && emailValidation && email !== emailValidation"
     v-show="showWarningNotification"
     class="notification is-warning"
   >
@@ -15,7 +15,7 @@ export default {
       type: String,
       required: true,
     },
-    emailVerification: {
+    emailValidation: {
       type: String,
       required: true,
     },
@@ -33,6 +33,5 @@ export default {
 .notification {
     margin-top: 5px;
     font-size: 15px;
-
 }
 </style>
